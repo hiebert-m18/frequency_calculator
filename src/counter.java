@@ -4,12 +4,12 @@ import java.io.*;
 import java.text.NumberFormat;
 
 /** ***************************************************
- *  Name:           Sveinson
+ *  Name:           Hiebert
  *  Class:          CS30S
  *
- *  Assignment:     Ax Qy
+ *  Assignment:     1.5 Frequency Counter
  *
- *  Description:    Place a short description of your program here
+ *  Description:    Counts the frequency of the numbers in a file
  *
  *************************************************************/
 
@@ -17,6 +17,8 @@ public class counter {
 
     public static void main(String[] args) throws IOException{
         // ***** constants *******
+        final int MAX = 1000;
+        final int freqMAX = 50;
 
         // ***** variables *****
 
@@ -32,6 +34,10 @@ public class counter {
         // a new line character that works on every computer system
         String nl = System.lineSeparator();
 
+        int[] list = new int[MAX];          // array for holding the 1000 numbers
+        int[] freqs = new int[freqMAX];     // array for holding frequencies
+        int n = 0;
+
         // ***** objects *****
 
         //Scanner scanner = new Scanner(System.in);
@@ -39,15 +45,22 @@ public class counter {
 
         // file io buffers for reading and writing to text files
 
-        //BufferedReader fin = new BufferedReader(new FileReader("filename.txt"));
+        BufferedReader fin = null;
+
+        try {
+            fin = new BufferedReader(new FileReader("src/data.txt"));
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found.");
+        }
+
         //PrintWriter fout = new PrintWriter(new BufferedWriter(new FileWriter("outfle.txt")));
 
         // ***** print banners *****
 
         banner = "*****************************" + nl;
-        banner += "Name:        Sveinson" + nl;
+        banner += "Name:        Hiebert" + nl;
         banner += "Class:       CS30S" + nl;
-        banner += "Assignment:  Ax Qy" + nl;
+        banner += "Assignment:  1.5 Frequency Counter" + nl;
         banner += "*****************************" + nl + nl;
 
         System.out.println(banner);
@@ -60,8 +73,36 @@ public class counter {
         // echo input back to console window
 
         // ***** Main Processing *****
+        n = 0;
+        strin = fin.readLine();
+
+        while (strin != null && n < MAX) {
+            list[n] = Integer.parseInt(strin);
+
+            n++;                    //increment n
+
+            strin = fin.readLine();
+        }// end eof
+
+        // find frequencies of numbers
+        for (int i = 0; i < freqMAX; i++) {
+            for (int j : list) {
+                if (j == i+1) {
+                    freqs[i]++;
+                }// end if
+            }// end for
+        }// end for
 
         // ***** Print Formatted Output *****
+        for (int i : freqs) {
+            System.out.println(i);
+        }
+
+        System.out.println();
+
+//        getFreqFromRange(40, 50, freqs);
+
+        getNumsFromFreq(14, freqs, freqMAX);
 
         // ***** Closing Message *****
 
@@ -74,5 +115,23 @@ public class counter {
         //fin.close();
         //fout.close();
     } // end main
+
+    static void getFreqNum(int num, int[] freqList) {
+        System.out.println(freqList[num - 1]);
+    }// end getFreqNum
+
+    static void getFreqFromRange(int min, int max, int[] freqList) {
+        for (int i = min; i <= max; i++) {
+            System.out.println(freqList[i-1]);
+        }// end for
+    }//end getFreqFromRange
+
+    static void getNumsFromFreq(int freq, int[] freqList, int freqMAX) {
+        for (int i = 0; i < freqMAX; i++) {
+            if (freqList[i] == freq) {
+                System.out.println(i+1);
+            }//end if
+        }//end for
+    }// end getNumsFromFreq
 
 } // end FormatTemplate

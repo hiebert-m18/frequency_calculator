@@ -72,7 +72,7 @@ public class number_generator {
             fout.println(random);
 
             n++;                // increment n
-        }
+        }// end while
 
         fout.close();
 
