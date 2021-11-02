@@ -4,19 +4,20 @@ import java.io.*;
 import java.text.NumberFormat;
 
 /** ***************************************************
- *  Name:           Sveinson
+ *  Name:           Malacai
  *  Class:          CS30S
  *
- *  Assignment:     Ax Qy
+ *  Assignment:     1.5 Frequency Calculator
  *
- *  Description:    Place a short description of your program here
+ *  Description:    Generate 1000 random numbers and write them to a file
  *
  *************************************************************/
 
-public class counter {
+public class number_generator {
 
     public static void main(String[] args) throws IOException{
         // ***** constants *******
+        final int MAX = 1000;
 
         // ***** variables *****
 
@@ -32,6 +33,9 @@ public class counter {
         // a new line character that works on every computer system
         String nl = System.lineSeparator();
 
+        // tracks the amount of numbers generated so far
+        int n = 0;
+
         // ***** objects *****
 
         //Scanner scanner = new Scanner(System.in);
@@ -40,14 +44,14 @@ public class counter {
         // file io buffers for reading and writing to text files
 
         //BufferedReader fin = new BufferedReader(new FileReader("filename.txt"));
-        //PrintWriter fout = new PrintWriter(new BufferedWriter(new FileWriter("outfle.txt")));
+        PrintWriter fout = new PrintWriter(new BufferedWriter(new FileWriter("src/data.txt")));
 
         // ***** print banners *****
 
         banner = "*****************************" + nl;
-        banner += "Name:        Sveinson" + nl;
+        banner += "Name:        Hiebert" + nl;
         banner += "Class:       CS30S" + nl;
-        banner += "Assignment:  Ax Qy" + nl;
+        banner += "Assignment:  1.5 Frequency Counter" + nl;
         banner += "*****************************" + nl + nl;
 
         System.out.println(banner);
@@ -60,6 +64,17 @@ public class counter {
         // echo input back to console window
 
         // ***** Main Processing *****
+        while (n < MAX) {
+            // generate a random number
+            int random = (int )(Math.random() * 50 + 1);
+
+            //write random number to file
+            fout.println(random);
+
+            n++;                // increment n
+        }
+
+        fout.close();
 
         // ***** Print Formatted Output *****
 
