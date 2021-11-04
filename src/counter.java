@@ -96,7 +96,7 @@ public class counter {
 
         // ***** Print Formatted Output *****
         // frequency of any number
-        System.out.println("Frequency of 31: " + freqs[31 - 1]);          //frequency of 31
+        System.out.println("Frequency of 31 : " + freqs[31 - 1]);          //frequency of 31
 
         // new line
         System.out.println();
@@ -104,17 +104,72 @@ public class counter {
         // frequency of a range of numbers
         System.out.println("The frequencies of the range 10-20");
 
-        int min = 10;
-        int max = 20;
+        int r_min = 10;
+        int r_max = 20;
         // get frequencies of the range 10-20
-        for (int i = min; i <= max; i++) {
-            System.out.println(i + ": " + freqs[i-1]);
+        for (int i = r_min; i <= r_max; i++) {
+            System.out.println(i + " : " + freqs[i-1]);
         }// end for
 
         // new line
         System.out.println();
 
         // see any range of numbers based on the frequency
+        //five most frequent
+        System.out.println("The 5 most frequent numbers:");
+        // setup temporary array so that I don't wreck original array
+        int[] tempArray = new int[freqMAX];
+        for (int i = 0; i < freqs.length; i++) {
+            tempArray[i] = freqs[i];
+        }//end for
+
+        int large[] = new int[5];                       // array to hold five largest
+        int max = 0;
+        int index;
+        for (int j = 0; j < 5; j++) {
+            max = tempArray[0];
+            index = 0;
+            for (int i = 1; i < tempArray.length; i++) {
+                // check for largest value
+                if (max < tempArray[i]) {
+                    max = tempArray[i];
+                    index = i;
+                }// end if
+            }// end for
+            large[j] = max;
+            tempArray[index] = Integer.MIN_VALUE;
+
+            System.out.println("Largest " + (j+1) +  " : " + large[j]);
+        }//end for
+
+        //new line
+        System.out.println();
+
+        // five least frequent
+        System.out.println("The 5 least frequent numbers:");
+        // reset temporary array
+        for (int i = 0; i < freqs.length; i++) {
+            tempArray[i] = freqs[i];
+        }//end for
+
+        int small[] = new int[5];                       // array to hold five largest
+        int min = 0;
+        for (int j = 0; j < 5; j++) {
+            min = tempArray[0];
+            index = 0;
+            for (int i = 1; i < tempArray.length; i++) {
+                // check for largest value
+                if (min > tempArray[i]) {
+                    min = tempArray[i];
+                    index = i;
+                }// end if
+            }// end for
+            small[j] = min;
+            tempArray[index] = Integer.MAX_VALUE;
+
+            System.out.println("Smallest " + (j+1) +  " : " + small[j]);
+        }//end for
+
 
         // new line
         System.out.println();
