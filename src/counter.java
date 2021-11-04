@@ -84,6 +84,7 @@ public class counter {
             strin = fin.readLine();
         }// end eof
 
+        // how do this more efficiently??
         // find frequencies of numbers
         for (int i = 0; i < freqMAX; i++) {
             for (int j : list) {
@@ -94,15 +95,39 @@ public class counter {
         }// end for
 
         // ***** Print Formatted Output *****
-        for (int i : freqs) {
-            System.out.println(i);
-        }
+        // frequency of any number
+        System.out.println("Frequency of 31: " + freqs[31 - 1]);          //frequency of 31
 
+        // new line
         System.out.println();
 
-//        getFreqFromRange(40, 50, freqs);
+        // frequency of a range of numbers
+        System.out.println("The frequencies of the range 10-20");
 
-        getNumsFromFreq(14, freqs, freqMAX);
+        int min = 10;
+        int max = 20;
+        // get frequencies of the range 10-20
+        for (int i = min; i <= max; i++) {
+            System.out.println(i + ": " + freqs[i-1]);
+        }// end for
+
+        // new line
+        System.out.println();
+
+        // see any range of numbers based on the frequency
+
+        // new line
+        System.out.println();
+
+        // see all numbers that appear n times (or the frequency)
+        System.out.println("All the numbers that appear 15 times:");
+
+        int freq = 15;               // n in this case
+        for (int i = 0; i < freqMAX; i++) {
+            if (freqs[i] == freq) {
+                System.out.println(i+1);
+            }//end if
+        }//end for
 
         // ***** Closing Message *****
 
@@ -115,23 +140,5 @@ public class counter {
         //fin.close();
         //fout.close();
     } // end main
-
-    static void getFreqNum(int num, int[] freqList) {
-        System.out.println(freqList[num - 1]);
-    }// end getFreqNum
-
-    static void getFreqFromRange(int min, int max, int[] freqList) {
-        for (int i = min; i <= max; i++) {
-            System.out.println(freqList[i-1]);
-        }// end for
-    }//end getFreqFromRange
-
-    static void getNumsFromFreq(int freq, int[] freqList, int freqMAX) {
-        for (int i = 0; i < freqMAX; i++) {
-            if (freqList[i] == freq) {
-                System.out.println(i+1);
-            }//end if
-        }//end for
-    }// end getNumsFromFreq
 
 } // end FormatTemplate
