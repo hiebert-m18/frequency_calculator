@@ -86,13 +86,18 @@ public class counter {
 
         // how do this more efficiently??
         // find frequencies of numbers
-        for (int i = 0; i < freqMAX; i++) {
-            for (int j : list) {
-                if (j == i+1) {
-                    freqs[i]++;
-                }// end if
-            }// end for
-        }// end for
+//        for (int i = 0; i < freqMAX; i++) {
+//            for (int j : list) {
+//                if (j == i+1) {
+//                    freqs[i]++;
+//                }// end if
+//            }// end for
+//        }// end for
+
+        // find frequencies of numbers
+        for (int i : list) {
+            freqs[i - 1] += 1;
+        }
 
         // ***** Print Formatted Output *****
         // frequency of any number
