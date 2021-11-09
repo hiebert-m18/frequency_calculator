@@ -97,7 +97,7 @@ public class counter {
         // find frequencies of numbers
         for (int i : list) {
             freqs[i - 1] += 1;
-        }
+        }// end for
 
         // ***** Print Formatted Output *****
         // frequency of any number
